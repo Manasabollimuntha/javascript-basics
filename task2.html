@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 150px;
+            background-color: #fceed1;
+        }
+        h1 {
+            color: blue;
+        }
+        .task {
+            margin-bottom: 50px;
+        }
+        .task label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .task input, .task select, .task button {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 50%;
+            box-sizing: border-box;
+            border: 2px solid;
+        }
+        .task button {
+            width: auto;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .task button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            background-color: #51d0de;
+            padding: 10px;
+            border: 2px solid #ccc;
+            margin-top: 10px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Task 2: Array Operations</h1>
+
+<div class="task" id="task2">
+    <label for="arrayInput">Enter Array Elements (comma separated):</label>
+    <input type="text" id="arrayInput">
+    <br><br>
+    <button onclick="performArrayOperations()">Perform Array Operations</button>
+    
+    <div class="output" id="arrayResults">Array Operations Result: </div>
+</div>
+
+<script>
+function performArrayOperations() {
+    let arrayInput = document.getElementById('arrayInput').value;
+    let arr = arrayInput.split(',').map(Number);
+    let sum = 0;
+    let output = '';
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            sum += arr[i];
+        }
+    }
+    output += `Sum of even numbers: ${sum}\n`;
+
+    let pushedElement = 10;
+    arr.push(pushedElement);
+    output += `Element pushed: ${pushedElement}\n`;
+    output += `Array after push: ${arr.join(', ')}\n`;
+
+    let unshiftedElement = 5;
+    arr.unshift(unshiftedElement);
+    output += `Element unshifted: ${unshiftedElement}\n`;
+    output += `Array after unshift: ${arr.join(', ')}\n`;
+
+    let poppedElement = arr.pop();
+    output += `Element popped: ${poppedElement}\n`;
+    output += `Array after pop: ${arr.join(', ')}\n`;
+
+    let shiftedElement = arr.shift();
+    output += `Element shifted: ${shiftedElement}\n`;
+    output += `Array after shift: ${arr.join(', ')}\n`;
+
+    let updatedElementIndex = 0;
+    let updatedElementValue = 100;
+    arr[updatedElementIndex] = updatedElementValue;
+    output += `Element at index ${updatedElementIndex} updated to: ${updatedElementValue}\n`;
+    output += `Array after update: ${arr.join(', ')}\n`;
+
+    let spliceStart = 2;
+    let spliceDeleteCount = 1;
+    let splicedElements = arr.splice(spliceStart, spliceDeleteCount, 15);
+    output += `Elements spliced: ${splicedElements.join(', ')}\n`;
+    output += `Array after splice: ${arr.join(', ')}\n`;
+
+    let sliceStart = 1;
+    let sliceEnd = 3;
+    let slicedArray = arr.slice(sliceStart, sliceEnd);
+    output += `Sliced Array (from index ${sliceStart} to ${sliceEnd}): ${slicedArray.join(', ')}\n`;
+
+    document.getElementById('arrayResults').innerText = `Array Operations Result:\n${output}`;
+}
+</script>
+
+</body>
+</html>

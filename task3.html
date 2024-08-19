@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 150px;
+            background-color:#fceed1;
+        }
+        h1 {
+            color: blue;
+        }
+        .task {
+            margin-bottom: 50px;
+        }
+        .task label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .task input, .task select, .task button {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 50%;
+            box-sizing: border-box;
+            border: 2px solid;
+        }
+        .task button {
+            width:auto;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .task button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+width:auto;
+            background-color: #51d0de;
+            padding: 10px;
+            border: 2px solid #ccc;
+            margin-top: 10px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Task 3: Object Manipulation</h1>
+
+<div class="task" id="task3">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName">
+    
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName">
+    
+    <label for="age">Age:</label>
+    <input type="number" id="age">
+    <br><br>
+    <button onclick="performObjectManipulation()">Perform Object Manipulation</button>
+    
+    <div class="output" id="personResult">Person Info: </div>
+</div>
+
+<script>
+function performObjectManipulation() {
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
+    let age = parseInt(document.getElementById('age').value);
+    
+    let person = {
+        firstName: firstName,
+        lastName: lastName,
+        age: age,
+        getFullName() {
+            return `${this.firstName} ${this.lastName}`;
+        },
+        incrementAge() {
+            this.age++;
+        },
+    };
+
+    let output = `Full Name: ${person.getFullName()}\n`;
+    person.incrementAge();
+    output += `New Age after increment: ${person.age}\n`;
+
+    document.getElementById('personResult').innerText = `Person Info:\n${output}`;
+}
+</script>
+
+</body>
+</html>

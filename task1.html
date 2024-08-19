@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 150px;
+            background-color: #fceed1;
+        }
+        h1 {
+            color: green;
+        }
+        .task {
+            margin-bottom: 50px;
+        }
+        .task label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .task input, .task select, .task button {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 30%;
+            box-sizing: border-box;
+            border: 2px solid;
+        }
+        .task button {
+            width: auto;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .task button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            background-color: #51d0de;
+            padding: 10px;
+            border: 2px solid #ccc;
+            margin-top: 10px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Task 1: Simple Calculator</h1>
+
+<div class="task" id="task1">
+    <label for="num1">First Number:</label>
+    <input type="number" id="num1" step="any">
+    
+    <label for="num2">Second Number:</label>
+    <input type="number" id="num2" step="any">
+    
+    <label for="operator">Operator:</label>
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <br><br>
+    <button onclick="performCalculation()">Calculate</button>
+    
+    <div class="output" id="calcResult">Result: </div>
+</div>
+
+<script>
+function performCalculation() {
+    let num1 = parseFloat(document.getElementById('num1').value);
+    let num2 = parseFloat(document.getElementById('num2').value);
+    let operator = document.getElementById('operator').value;
+    let result;
+    
+    switch(operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            result = num2 !== 0 ? num1 / num2 : 'Error: Division by zero';
+            break;
+        default:
+            result = 'Invalid operator';
+    }
+
+    document.getElementById('calcResult').innerText = `Result: ${num1} ${operator} ${num2} = ${result}`;
+}
+</script>
+
+</body>
+</html>
